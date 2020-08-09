@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Tech Notes`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Zach Colbert`,
+      summary: `who recently earned a B.S. in Physics, and is picking up skills to start a career in cybersecurity.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `A blog about technology, reviewing security tools, resources for learning, and current events.`,
+    siteUrl: `https://blog.zcolbert.com`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `zach_colbert`,
     },
   },
   plugins: [
