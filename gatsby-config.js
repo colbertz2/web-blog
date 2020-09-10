@@ -31,6 +31,15 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-footnotes`,
+            options: {
+              footnoteBackRefPreviousElementDisplay: `inline`,
+              footnoteBackRefDisplay: `inline`,
+              footnoteBackRefInnerTextStartPosition: `front`,
+              // footnoteBackRefInnerText: `^`,
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
