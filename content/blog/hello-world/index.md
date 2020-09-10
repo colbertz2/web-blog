@@ -2,6 +2,7 @@
 title: Hello World!
 date: 2020-09-10
 description: "Hello World! About the author, the blog, and the motivation for writing."
+publish: yes
 ---
 
 Anyone who has attempted to learn a new programming language knows that we start with "Hello World!" Aside from the fact that the template for this blog starts out with a post entitled "Hello World" and I've only added the exclamation mark, it seems appropriate.
