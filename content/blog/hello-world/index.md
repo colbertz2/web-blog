@@ -25,7 +25,5 @@ The Internet has facilitated unprecedented information sharing in recent decades
 
 Enjoy!
 
-
 [^1]: Quantum mechanics is both challening and fun! Thermodynamics is just challenging.
-
 [^2]: Looking for someone who can write code _and_ do math? An IT administrator? A security engineer? [Here's my resume.](https://www.zcolbert.com)
