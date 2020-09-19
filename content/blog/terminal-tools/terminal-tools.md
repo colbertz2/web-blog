@@ -134,9 +134,6 @@ love.
 #### mesg
 
 Display (or do not display) messages from other users.
-
-Example:
-
 ```
 Allow users to send you messages
 $ mesg y
@@ -148,9 +145,6 @@ $ mesg n
 #### who
 
 Show who is logged on.
-
-Example:
-
 ```
 $ who
 colbertz pts/0        2020-09-18 12:42 (:0)
@@ -162,9 +156,6 @@ colbertz pts/2        2020-09-18 12:42 (:0)
 #### w
 
 Show who is logged on and what they are doing.
-
-Example:
-
 ```
 $ w
  15:12:24 up  2:45,  4 users,  load average: 0.18, 0.31, 0.29
@@ -178,9 +169,6 @@ colbertz pts/2     12:42   15:52   7.21s  7.01s vim /home/colbertz/notes/researc
 #### tty
 
 Print the file name of the terminal connected to standard input.
-
-Example:
-
 ```
 $ tty
 /dev/pts/1
@@ -192,9 +180,6 @@ Write a message to all users.
 
 _Note: Only the superuser can write on the terminals of users who have chosen to
 deny messages._
-
-Example:
-
 ```
 $ wall "This is a test"
 ```
@@ -212,9 +197,6 @@ This is a test
 #### boxes
 
 Text mode box and comment drawing filter.
-
-Example:
-
 ```
 $ echo "This is a test" | boxes
 /******************/
@@ -228,9 +210,6 @@ basic usage seems like it would be neat for header comments in C/C++ files thoug
 #### cowsay/cowthink
 
 Configurable speaking/thinking cow (and a bit more).
-
-Examples:
-
 ```
 $ echo "This is a test" | cowsay
  ________________
@@ -266,9 +245,6 @@ $ cowthink moo
 #### figlet
 
 Display large characters made up of ordinary screen characters.
-
-Example:
-
 ```
 $ echo "love FIGlet" | figlet
  _                  _____ ___ ____ _      _
@@ -292,9 +268,6 @@ Display large and colourful characters.
 
 `toilet` is marketed as an alternative to figlet. As a figlet fan, I'm not sure
 why we needed this.
-
-Example:
-
 ```
 $ toilet "Flush"
 
@@ -310,8 +283,6 @@ Okay, then.
 #### lolcat
 
 Rainbow coloring effect for the text console display.
-
-Examples:
 ![lolcat with a string](lolcat-string.png)
 
 But honestly, the best way to use `lolcat` is on a pipeline with `figlet`:
@@ -328,9 +299,6 @@ Another dialog box tool with _many_ options, except this one gives you that
 retro terminal GUI you have probably seen used by old OS installers (or some
 modern server OS installers)! I'll implement the same example I used for
 `zenity`.
-
-Example:
-
 ```
 $ dialog --yesno "Would you like some chocolate milk?" 10 80
 $ echo $?
@@ -353,9 +321,6 @@ it installed by default.
 #### notify-send
 
 A program to send desktop notifications.
-
-Example:
-
 ```
 $ notify-send "TEST" "This is a test message"
 ```
@@ -391,9 +356,6 @@ I'm pretty confident I know the answer to this question.
 Display a message or query in a window (X-based /bin/echo)
 
 Sounds fun! It's like echo but... in a window.
-
-Example:
-
 ```
 $ xmessage "This is a test"
 Warning: Unable to load any usable ISO8859 font
