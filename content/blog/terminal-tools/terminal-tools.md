@@ -8,10 +8,10 @@ publish: yes
 > This honestly started out as just some notes for myself when Googling for
 > the `write` command, but I got so into the groove of writing that I figured
 > it wouldn't be hard to turn this into a full-blown post about some of my
-> favorite useful (and goofy) tools for the command line.
+> favorite useful (and goofy) command-line tools.
 
 Cliff Stoll often refers to messages "flashed" to one user or another's
-terminal in his book "The Cuckoo's Egg." Stoll works exclusively with Unix
+terminal in his book _The Cuckoo's Egg_. Stoll works exclusively with Unix
 systems in the book, so I started looking for ways to accomplish this on a
 modern Linux system.
 
