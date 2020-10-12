@@ -3,7 +3,7 @@ module.exports = {
     title: `Tech Notes`,
     author: {
       name: `Zach Colbert`,
-      summary: `who recently earned a B.S. in Physics, and is picking up skills to start a career in cybersecurity.`,
+      summary: `who recently earned a B.S. in Physics, and is picking up skills to start a career in information technology.`,
     },
     description: `A blog about technology, reviewing security tools, resources for learning, and current events.`,
     siteUrl: `https://blog.zcolbert.com`,
