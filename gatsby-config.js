@@ -5,7 +5,7 @@ module.exports = {
       name: `Zach Colbert`,
       summary: `who recently earned a B.S. in Physics, and is picking up skills to start a career in information technology.`,
     },
-    description: `A blog about technology, reviewing security tools, resources for learning, and current events.`,
+    description: `Zach's notes about technology. Maybe they'll be useful later.`,
     siteUrl: `https://blog.zcolbert.com`,
     social: {
       twitter: `zach_colbert`,
