@@ -55,7 +55,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { publish: { eq: "yes" } } }
+      filter: { frontmatter: { publish: { eq: "yes" } }, fields: { slug: { glob:"/*/" } } }
     ) {
       edges {
         node {
