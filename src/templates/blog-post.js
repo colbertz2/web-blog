@@ -1,9 +1,10 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ChildPosts from "../components/children"
 import { rhythm, scale } from "../utils/typography"
 
 require(`katex/dist/katex.min.css`)
@@ -11,7 +12,14 @@ require(`katex/dist/katex.min.css`)
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
+  // const { previous, next } = pageContext
+
+  let childPosts
+  if (data.allMarkdownRemark.edges.length > 0) {
+    childPosts = <ChildPosts posts={data.allMarkdownRemark.edges} />
+  } else {
+    childPosts = <div></div>
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -40,6 +48,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <nav>{childPosts}</nav>
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -50,7 +59,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </footer>
       </article>
 
-      <nav>
+
+
+      {/* <nav>
         <ul
           style={{
             display: `flex`,
@@ -62,8 +73,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+              <Link to="/" rel="home">
+                ← Home
               </Link>
             )}
           </li>
@@ -75,7 +86,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             )}
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </Layout>
   )
 }
@@ -83,7 +94,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $childGlob: String!) {
     site {
       siteMetadata {
         title
@@ -97,6 +108,19 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+    }
+    allMarkdownRemark(filter: {fields: {slug: {glob: $childGlob}}, frontmatter: {publish: {eq: "yes"}}}, sort: {fields: frontmatter___date}) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+          }
+        }
       }
     }
   }

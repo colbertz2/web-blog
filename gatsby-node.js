@@ -44,6 +44,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: blogPost,
       context: {
         slug: post.node.fields.slug,
+        childGlob: post.node.fields.slug + "*",
         previous,
         next,
       },
