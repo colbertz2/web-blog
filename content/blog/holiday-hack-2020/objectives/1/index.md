@@ -1,30 +1,41 @@
 ---
 title: 1. Uncover Santa's Gift List
-date: 2021-01-12
+date: 2021-01-13
 description: '#HolidayHack 2020 / Objectives / 1'
-publish: no
+publish: yes
 ---
 
-After signing on to attend my first KringleCon, naturally I was very excited. I ran straight to the cable car, and made my way up to Kringle Castle to have a look around! I met some of the elves in the courtyard, and started helping them with various issues they were experiencing (_Achievements_ coming soon). 
+![Zach and Jingle Ringford next to the gondola at the base of the mountain.](./o1-landing.png)
 
-Once I had found my feet, I took a look at the first objective.
+We start this objective at the base of the mountain, next to the gondola. I ended up wandering up to the castle before even looking at my badge, and had to ride the gondola back down &mdash; _so if you're at the castle, ride the gondola back to where you started to complete this objective._
 
-## The Objective
-> There is a photo of Santa's Desk on that billboard with his personal gift list. What gift is Santa planning on getting Josh Wright for the holidays? Talk to Jingle Ringford at the bottom of the mountain for advice.
+The billboard falls outside the viewport of my browser, so I had to zoom out to see it. You could also use your browser's developer tools to look through the page's elements until you find one with class `billboard-sign`. Hover over the billboard to find that it's a link, and click the link to open the billboard image in a new tab.
 
-Billboard? Bottom of the mountain? I have to go _back_?
+![A small rendering of the billboard image. Best to get the full-size one from the game.](./o1-billboard-small.png)
 
-Down the hill I went, in search of a billboard.
+With the full billboard image in front of us, we can now see that Santa's list has been distorted. You can probably get away with using your favorite image editor to undo the distortion, but I stuck with [Photopea](https://www.photopea.com/), as recommended in one of the hints from Jingle Ringford. Save the billboard image, and open it with the editor of your choice.
 
-![I'm standing near the foot of the billboard, but the billboard isn't within my browser's viewport.](./o1-landing.png)
+With the image open in your editor, use a lasso tool to select only the twisted area of the image. Then, use a twist filter to reverse-twist the selected area to make it readable (in Photopea you can find the appropriate effect under `Filter > Distort > Twirl`). I wasn't able to make a good enough selection to perfectly untwist the list, but by using a live preview of the twist filter I was able to read one or two words at a time until I pieced together the answer.
 
-<!-- USE ELEMENTS INSTEAD OF SOURCES. YOU CAN FIND A FULL_RESOLUTION IMAGE -->
+![Use the Twirl effect in Photopea to untwist the image.](./o1-photopea.png)
 
-I searched each corner of the landing, and it seems that only the base of the billboard is visible within my browser's viewport. By design? Perhaps. Can this obstacle be overcome? Of course!
+## Summary
+There is a photo of Santa's Desk on that billboard with his personal gift list. What gift is Santa planning on getting Josh Wright for the holidays? Talk to Jingle Ringford at the bottom of the mountain for advice.
 
-_Right-click, Inspect, Sources._ I searched through the page's assets for a moment, and found it!
 
-![Browser developer tools reveal the billboard image.](./o1-billboard.png)
+### Hints
+#### 1. Image Edit Tool
+There are [tools](https://www.photopea.com/) out there that could help Filter the Distortion that is this Twirl.
+&mdash; Jingle Ringford
 
-There was a new problem. Part of the image is twisted, so I couldn't read Santa's list. I don't have Photoshop, but an elf by the name of Jingle Ringford told me about an [online tool](https://www.photopea.com/) that sounded useful. I save the image, and upload it to the editor.
+#### 2. Twirl Area
+Make sure you Lasso the correct twirly area.
+&mdash; Jingle Ringford
 
+
+### Solution
+1. At the bottom of the mountain, zoom out with your browser to find the billboard.
+2. Click on the billboard to open it's image. Save the image.
+3. Upload the image to [Photopea](https://www.photopea.com/) and lasso an area around the distorted part of the image.
+4. Open the Twirl tool from the `Filter > Distort` menu.
+5. Adjust the twirl of the lassoed area until you can read Josh Wright's name on the list. You may need to adjust it further to read the item next to Josh's name.
