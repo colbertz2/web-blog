@@ -2,7 +2,7 @@
 title: 1. Uncover Santa's Gift List
 date: 2021-01-13
 description: '#HolidayHack 2020 / Objectives / 1'
-publish: yes
+publish: no
 ---
 
 ![Zach and Jingle Ringford next to the gondola at the base of the mountain.](./o1-landing.png)
