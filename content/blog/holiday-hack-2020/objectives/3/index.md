@@ -8,12 +8,16 @@ publish: no
 The third objective will have us digging into the source code of an Electron app to find a hard-coded password. _Note: I wasn't able to run the provided Electron app on my Linux system (with Wine), so some of this guide will require a Windows system._
 
 
+<!-- TOC depthTo:3 -->
+
 - [About Electron](#about-electron)
 - [Getting Started](#getting-started)
 - [Extracting Source Code](#extracting-source-code)
 - [Summary](#summary)
   - [Hints](#hints)
   - [Solution](#solution)
+
+<!-- /TOC -->
 
 
 ## About Electron
