@@ -24,13 +24,15 @@ There is a photo of Santa's Desk on that billboard with his personal gift list. 
 
 
 ### Hints
+Jingle Ringford will give you two useful hints.
+
 #### 1. Image Edit Tool
 There are [tools](https://www.photopea.com/) out there that could help Filter the Distortion that is this Twirl.
-_&mdash; Jingle Ringford_
+
 
 #### 2. Twirl Area
 Make sure you Lasso the correct twirly area.
-_&mdash; Jingle Ringford_
+
 
 
 ### Solution

@@ -143,25 +143,27 @@ When you unwrap the over-wrapped file, what text string is inside the package? T
 [Josh Wright, Open S3 Buckets: Still a Problem In 2020 | KringleCon 2020](https://www.youtube.com/watch?v=t4UzXx5JHk0)
 
 ### Hints
+Shinny Upatree will give you five useful hints upon completion of the Kringle Kiosk challenge.
+
 #### 1. Find Santa's Package
 Find Santa's package file from the cloud storage provider. Check Josh Wright's [talk](https://www.youtube.com/watch?v=t4UzXx5JHk0) for more tips!
-_&mdash; Shinny Upatree_
+
 
 #### 2. Leaky AWS S3 Buckets
 It seems like there's a new story every week about data exposed through unprotected [Amazon S3 buckets](https://www.computerweekly.com/news/252491842/Leaky-AWS-S3-bucket-once-again-at-centre-of-data-breach).
-_&mdash; Shinny Upatree_
+
 
 #### 3. Finding S3 Buckets
 Robin Wood wrote up a guide about [finding these open S3 buckets](https://digi.ninja/blog/whats_in_amazons_buckets.php).
-_&mdash; Shinny Upatree_
+
 
 #### 4. Bucket_finder.rb
 He even wrote a tool to search for [unprotected buckets](https://digi.ninja/projects/bucket_finder.php)!
-_&mdash; Shinny Upatree_
+
 
 #### 5. Santa's Wrapper3000
 Santa's Wrapper3000 is pretty buggy. It uses several compression tools, binary to ASCII conversion, and other tools to wrap packages.
-_&mdash; Shinny Upatree_
+
 
 
 ### Solution
