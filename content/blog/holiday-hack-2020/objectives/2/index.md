@@ -1,8 +1,8 @@
 ---
 title: 2. Investigate S3 Bucket
-date: 2021-01-12
+date: 2021-01-13
 description: '#HolidayHack 2020 / Objectives / 2'
-publish: no
+publish: yes
 ---
 
 The second objective has us looking for the contents of a file in an exposed AWS Simple Storage Service (S3) bucket. For some important context, I recommend watching [this talk from Josh Wright](https://www.youtube.com/watch?v=t4UzXx5JHk0) before getting started.
