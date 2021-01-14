@@ -7,6 +7,23 @@ publish: no
 
 The second objective has us looking for the contents of a file in an exposed AWS Simple Storage Service (S3) bucket. For some important context, I recommend watching [this talk from Josh Wright](https://www.youtube.com/watch?v=t4UzXx5JHk0) before getting started.
 
+
+<!-- TOC depthTo:3 -->
+
+- [Find the Bucket](#find-the-bucket)
+- [Download Contents of the Bucket](#download-contents-of-the-bucket)
+- [Unwrap the Package](#unwrap-the-package)
+  - [Encoding](#encoding)
+  - [Compression](#compression)
+  - [More Compression!](#more-compression)
+- [Summary](#summary)
+  - [Relevant Talks](#relevant-talks)
+  - [Hints](#hints)
+  - [Solution](#solution)
+
+<!-- /TOC -->
+
+
 ## Find the Bucket
 We know from Shinny Upatree that the file we're looking for is in an S3 bucket, but we don't know anything else about the bucket. The console provides us with the `bucket_finder.rb` script referenced in Josh's talk, so we can scan some buckets and find an accessible one.
 
@@ -57,7 +74,7 @@ The message of the day and the objective both indicate that we're not done here 
 
 To unwrap the file, we need to make a series of educated guesses as to what was done to the original file that resulted in what we're looking at, undoing each layer of "wrapping."
 
-### 1. Encoding
+### Encoding
 ```
 UEsDBAoAAAAAAIAwhFEbRT8anwEAAJ8BAAAcABwAcGFja2FnZS50eHQuWi54ei54eGQudGFyLmJ6MlVUCQADoBfKX6AXyl91eAsAAQT2AQAABBQAAABCWmg5MUFZJlNZ2ktivwABHv+Q3hASgGSn//AvBxDwf/ ...
 ```
