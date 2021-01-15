@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -9,8 +9,21 @@ import { rhythm, scale } from "../utils/typography"
 
 require(`katex/dist/katex.min.css`)
 
+const SmallPar = ({ children }) => (
+  <p
+    style={{
+      ...scale(-1 / 5),
+      display: `block`,
+      marginBottom: 0,
+    }}
+  >
+    {children}
+  </p>
+)
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
+  const slug = pageContext.slug
   const siteTitle = data.site.siteMetadata.title
   // const { previous, next } = pageContext
 
@@ -21,6 +34,43 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     childPosts = <div></div>
   }
 
+  const postTitle = (
+    <h1
+      style={{
+        marginTop: 0,
+        marginBottom: 0,
+      }}
+    >
+      {post.frontmatter.title}
+    </h1>
+  )
+
+  const postDate = (
+    <SmallPar>
+      {post.frontmatter.date}
+    </SmallPar>
+  )
+
+  const postPath = (
+    <SmallPar>
+      <Link to="/">home</Link>
+      {slug.slice(1, -1).split('/').map((p, i, a) => (
+        <span>
+          {" / "}
+          <Link key={p} to={"/" + a.slice(0, i + 1).join('/')}>{p}</Link>
+        </span>
+      ))}
+    </SmallPar>
+  )
+
+  const postHeader = (
+    <header style={{ marginBottom: rhythm(1), }}>
+      {postPath}
+      {postTitle}
+      {postDate}
+    </header>
+  )
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -28,25 +78,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <article>
-        <header>
-          <h1
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
-        </header>
+        {postHeader}
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <nav>{childPosts}</nav>
         <hr
