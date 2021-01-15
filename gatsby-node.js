@@ -50,6 +50,14 @@ exports.createPages = async ({ graphql, actions }) => {
       return (isChild && isDirectChild)
     }).map(p => p.node)
 
+    var s = slug.split('/').slice(0, -2)
+    const parentSlugs = s.map((v, i, a) => (
+      a.slice(0, i + 1).join('/') + "/"
+    ))
+    const parents = posts.filter(p => (
+      parentSlugs.includes(p.node.fields.slug)
+    )).map(p => p.node)
+
     createPage({
       path: slug,
       component: blogPost,
@@ -57,6 +65,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: slug,
         childGlob: slug + "*",
         children,
+        parents,
       },
     })
   })

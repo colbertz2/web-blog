@@ -20,6 +20,28 @@ const SmallPar = ({ children }) => (
   </p>
 )
 
+const PostPath = ({ slug, title, parents }) => {
+  const sep = " / "
+
+  let parentLinks = parents.length === 0 ? null
+    : parents.map(p => (
+      <span>
+        {sep}
+        <Link key={p.fields.slug} to={p.fields.slug}>
+          {p.frontmatter.title}
+        </Link>
+      </span>
+    ))
+
+  return (
+    <SmallPar>
+      <Link to="/">Home</Link>
+      {parentLinks}
+      {sep}
+    </SmallPar>
+  )
+}
+
 const ChildTree = ({ posts }) => {
   const bar = "\u2500"
   const angle = "\u2514"
@@ -71,22 +93,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   )
 
   const postPath = (
-    <SmallPar>
-      <Link to="/">home</Link>
-      {slug.slice(1, -1).split('/').map((p, i, a) => (
-        <span>
-          {" / "}
-          <Link key={p} to={"/" + a.slice(0, i + 1).join('/')}>{p}</Link>
-        </span>
-      ))}
-    </SmallPar>
+    <PostPath slug={slug} title={post.frontmatter.title} parents={pageContext.parents} />
   )
 
   const postHeader = (
     <header style={{ marginBottom: rhythm(1), }}>
-      {postDate}
-      {postTitle}
       {postPath}
+      {postTitle}
+      {postDate}
       {childTree}
     </header>
   )
