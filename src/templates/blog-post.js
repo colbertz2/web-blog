@@ -4,7 +4,6 @@ import { graphql, Link } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ChildPosts from "../components/children"
 import { rhythm, scale } from "../utils/typography"
 
 require(`katex/dist/katex.min.css`)
@@ -21,18 +20,38 @@ const SmallPar = ({ children }) => (
   </p>
 )
 
+const ChildTree = ({ posts }) => {
+  const bar = "\u2500"
+  const angle = "\u2514"
+  const tee = "\u251C"
+
+  if (posts.length === 0) { return null; }
+
+  var tree = posts.slice(0, -1).map(p => (
+    <SmallPar>
+      {tee}{bar}{" "}
+      <Link to={p.fields.slug}>{p.frontmatter.title}</Link>
+    </SmallPar>
+  ))
+
+  const lp = posts.slice(-1)[0]
+  tree.push(
+    <SmallPar>
+      {angle}{bar}{" "}
+      <Link to={lp.fields.slug}>{lp.frontmatter.title}</Link>
+    </SmallPar>
+  )
+
+  return <nav>{tree}</nav>
+}
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const slug = pageContext.slug
   const siteTitle = data.site.siteMetadata.title
   // const { previous, next } = pageContext
 
-  let childPosts
-  if (data.allMarkdownRemark.edges.length > 0) {
-    childPosts = <ChildPosts posts={data.allMarkdownRemark.edges} />
-  } else {
-    childPosts = <div></div>
-  }
+  const childTree = <ChildTree posts={pageContext.children} />
 
   const postTitle = (
     <h1
@@ -65,9 +84,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   const postHeader = (
     <header style={{ marginBottom: rhythm(1), }}>
-      {postPath}
-      {postTitle}
       {postDate}
+      {postTitle}
+      {postPath}
+      {childTree}
     </header>
   )
 
@@ -80,7 +100,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <article>
         {postHeader}
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <nav>{childPosts}</nav>
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -91,35 +110,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <Bio />
         </footer>
       </article>
-
-
-
-      {/* <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to="/" rel="home">
-                ← Home
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav> */}
     </Layout>
   )
 }

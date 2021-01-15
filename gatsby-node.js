@@ -39,14 +39,24 @@ exports.createPages = async ({ graphql, actions }) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
+    const slug = String(post.node.fields.slug)
+    const slugCount = slug.split('/').length
+    const children = posts.filter(p => {
+      const fSlug = String(p.node.fields.slug)
+      const fSlugCount = fSlug.split('/').length
+      const isChild = fSlug.startsWith(slug)
+      const isDirectChild = fSlugCount === slugCount + 1
+
+      return (isChild && isDirectChild)
+    }).map(p => p.node)
+
     createPage({
-      path: post.node.fields.slug,
+      path: slug,
       component: blogPost,
       context: {
-        slug: post.node.fields.slug,
-        childGlob: post.node.fields.slug + "*",
-        previous,
-        next,
+        slug: slug,
+        childGlob: slug + "*",
+        children,
       },
     })
   })
