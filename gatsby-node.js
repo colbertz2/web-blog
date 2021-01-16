@@ -57,6 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const parents = posts.filter(p => (
       parentSlugs.includes(p.node.fields.slug)
     )).map(p => p.node)
+    parents.reverse()
 
     createPage({
       path: slug,
