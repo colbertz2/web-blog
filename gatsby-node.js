@@ -50,6 +50,33 @@ exports.createPages = async ({ graphql, actions }) => {
       return (isChild && isDirectChild)
     }).map(p => p.node)
 
+    const sortByTitleNumeral = children.every(node => (
+      String(node.frontmatter.title).match("^[0-9]*\..*")
+    ))
+
+    if (sortByTitleNumeral) {
+      // Numerical sort by the number leading the post title
+      children.sort((a, b) => {
+        const na = Number(String(a.frontmatter.title).split('.')[0])
+        const nb = Number(String(b.frontmatter.title).split('.')[0])
+        return (na > nb ? 1 : -1)
+      })
+    } else {
+      // Alphabetical by title
+      children.sort((a, b) => {
+        const ta = String(a.frontmatter.title)
+        const tb = String(b.frontmatter.title)
+
+        if (ta < tb) {
+          return -1
+        } else if (ta > tb) {
+          return 1
+        } else {
+          return 0
+        }
+      })
+    }
+
     var s = slug.split('/').slice(0, -2)
     const parentSlugs = s.map((v, i, a) => (
       a.slice(0, i + 1).join('/') + "/"
