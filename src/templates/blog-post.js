@@ -83,13 +83,15 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       }}
     >
       {post.frontmatter.title}
+      {" "}
+      <span style={{
+        ...scale(-1 / 5),
+        fontWeight: "400",
+        fontFamily: ['Merriweather', 'Georgia', 'serif'],
+      }}>
+        {post.frontmatter.date}
+      </span>
     </h1>
-  )
-
-  const postDate = (
-    <SmallPar>
-      {post.frontmatter.date}
-    </SmallPar>
   )
 
   const postPath = (
@@ -100,7 +102,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     <header style={{ marginBottom: rhythm(1), }}>
       {postPath}
       {postTitle}
-      {postDate}
       {childTree}
     </header>
   )
