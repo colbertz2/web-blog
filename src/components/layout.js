@@ -64,6 +64,15 @@ const Layout = ({ location, title, children }) => {
         {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </div>
+        <div
+          style={{
+            fontSize: `8pt`
+          }}
+        >
+          Any opinions that end up on this blog are the sole responsibility of the author, not the author's employer(s).
+          <br />
+          They're probably not worth much anyway.
+        </div>
       </footer>
     </div>
   )
