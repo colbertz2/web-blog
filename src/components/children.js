@@ -4,10 +4,10 @@ import { Link } from "gatsby"
 const ChildPosts = ({ posts }) => (
   <table>
     <thead>
-      <tr>
+      {/* <tr>
         <th>Post</th>
         <th>Date</th>
-      </tr>
+      </tr> */}
     </thead>
     <tbody>
       {posts.map(p => (

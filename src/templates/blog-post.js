@@ -1,25 +1,110 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ChildPosts from "../components/children"
 import { rhythm, scale } from "../utils/typography"
 
 require(`katex/dist/katex.min.css`)
 
+const SmallPar = ({ children }) => (
+  <p
+    style={{
+      ...scale(-1 / 5),
+      display: `block`,
+      marginBottom: 0,
+    }}
+  >
+    {children}
+  </p>
+)
+
+const PostPath = ({ slug, title, parents }) => {
+  const sep = " / "
+
+  let parentLinks = parents.length === 0 ? null
+    : parents.map(p => (
+      <span>
+        {sep}
+        <Link key={p.fields.slug} to={p.fields.slug}>
+          {p.frontmatter.title}
+        </Link>
+      </span>
+    ))
+
+  return (
+    <SmallPar>
+      <Link to="/">Home</Link>
+      {parentLinks}
+      {sep}
+    </SmallPar>
+  )
+}
+
+const ChildTree = ({ posts }) => {
+  const bar = "\u2500"
+  const angle = "\u2514"
+  const tee = "\u251C"
+
+  if (posts.length === 0) { return null; }
+
+  var tree = posts.slice(0, -1).map(p => (
+    <SmallPar>
+      {tee}{bar}{" "}
+      <Link to={p.fields.slug}>{p.frontmatter.title}</Link>
+    </SmallPar>
+  ))
+
+  const lp = posts.slice(-1)[0]
+  tree.push(
+    <SmallPar>
+      {angle}{bar}{" "}
+      <Link to={lp.fields.slug}>{lp.frontmatter.title}</Link>
+    </SmallPar>
+  )
+
+  return <nav>{tree}</nav>
+}
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
+  const slug = pageContext.slug
   const siteTitle = data.site.siteMetadata.title
   // const { previous, next } = pageContext
 
-  let childPosts
-  if (data.allMarkdownRemark.edges.length > 0) {
-    childPosts = <ChildPosts posts={data.allMarkdownRemark.edges} />
-  } else {
-    childPosts = <div></div>
-  }
+  const childTree = <ChildTree posts={pageContext.children} />
+
+  const postTitle = (
+    <h1
+      style={{
+        marginTop: 0,
+        marginBottom: 0,
+      }}
+    >
+      {post.frontmatter.title}
+      {" "}
+      <span style={{
+        ...scale(-1 / 5),
+        fontWeight: "400",
+        fontFamily: ['Merriweather', 'Georgia', 'serif'],
+      }}>
+        {post.frontmatter.date}
+      </span>
+    </h1>
+  )
+
+  const postPath = (
+    <PostPath slug={slug} title={post.frontmatter.title} parents={pageContext.parents} />
+  )
+
+  const postHeader = (
+    <header style={{ marginBottom: rhythm(1), }}>
+      {postPath}
+      {postTitle}
+      {childTree}
+    </header>
+  )
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -28,65 +113,18 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <article>
-        <header>
-          <h1
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
-        </header>
+        {postHeader}
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <nav>{childPosts}</nav>
         <hr
           style={{
             marginBottom: rhythm(1),
+            marginTop: rhythm(1),
           }}
         />
         <footer>
           <Bio />
         </footer>
       </article>
-
-
-
-      {/* <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to="/" rel="home">
-                ← Home
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav> */}
     </Layout>
   )
 }
